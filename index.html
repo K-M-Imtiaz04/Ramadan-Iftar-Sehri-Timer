@@ -3,18 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
 <meta name="description" content="Accurate Ramadan timer with Sehri and Iftar countdown for your location. Get daily fasting times, prayer reminders, and Ramadan schedule 2026.">
 <meta name="keywords" content="Ramadan timer, Sehri time, Iftar time, Ramadan countdown, fasting time today, Ramadan 2026, prayer time, iftar countdown, sehri countdown">
 <meta name="author" content="Ramadan Timer 2026 – Sehri & Iftar Countdown - Created By Imtiaz">
 <meta name="robots" content="index, follow">
 <link rel="icon" href="https://img.freepik.com/premium-vector/ramadan-logo-here_1127111-318.jpg" type="image/jpeg">
-
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <title>Ramadan Timer 2026 – Sehri & Iftar Countdown - Created By Imtiaz</title>
 
-  
 <audio id="bgMusic" loop>
   <source src="ramadan.mp3" type="audio/mpeg">
 </audio>
@@ -33,8 +30,6 @@ function playMusic() {
        
     });
 }
-
-
 function toggleMusic() {
     if(isPlaying){
         music.pause();
@@ -44,17 +39,11 @@ function toggleMusic() {
         playMusic();
     }
 }
-
-
 btn.addEventListener("click", toggleMusic);
-
-
 document.addEventListener("click", function startOnce() {
     playMusic();
     document.removeEventListener("click", startOnce);
 }, { once: true });
-
-
 document.addEventListener("touchstart", function startOnceTouch() {
     playMusic();
     document.removeEventListener("touchstart", startOnceTouch);
@@ -166,10 +155,9 @@ body {
     font-size:14px;
     opacity:0.9;
 }
-
 </style>
-</head>
 
+</head>
 <body>
 
 <div class="container">
@@ -178,28 +166,22 @@ body {
 <div class="location">📍 কুমিল্লা, বাংলাদেশ</div>
 
 <div class="card">
-
 <div id="ramadanDay">Loading...</div>
 <div class="date" id="todayDate"></div>
-
 <h3 id="countdownTitle">Countdown</h3>
 <div class="countdown" id="countdown">00:00:00</div>
-
 <div class="time-box">
-
 <div class="time-item">
 <div class="label">সাহরী শেষ</div>
 <div class="time" id="sehri">--</div>
 </div>
-
 <div class="time-item">
 <div class="label">ইফতার</div>
 <div class="time" id="iftar">--</div>
 </div>
-
+</div>
 </div>
 
-</div>
 </div>
 
 <script>
@@ -260,29 +242,22 @@ function getTodayData() {
             return day;
         }
     }
-
     return ramadanCalendar[0];
 }
 
 const todayData = getTodayData();
 document.getElementById("sehri").innerText =
     toBanglaNumber(format12(todayData.sehri));
-
 document.getElementById("iftar").innerText =
     toBanglaNumber(format12(todayData.iftar));
-
 document.getElementById("ramadanDay").innerText =
     "রমজান " + todayData.ramadanDay + " • হিজরি " + todayData.hijriDay;
-
 document.getElementById("todayDate").innerText =
     todayData.date;
-
 
 let todayDate = new Date().toISOString().split('T')[0];
 sehriTimeObj = new Date(todayDate + "T" + todayData.sehri);
 iftarTimeObj = new Date(todayDate + "T" + todayData.iftar);
-
-
 
 function updateCountdown() {
 
@@ -327,16 +302,71 @@ function updateCountdown() {
 
 setInterval(updateCountdown, 1000);
 updateCountdown();
-
 </script>
 
+<script>
+document.addEventListener("contextmenu", e => e.preventDefault());
+document.onkeydown = function (e) {
+    if (
+        e.keyCode == 123 || // F12
+        (e.ctrlKey && e.shiftKey && e.keyCode == 73) || // Ctrl+Shift+I
+        (e.ctrlKey && e.shiftKey && e.keyCode == 74) || // Ctrl+Shift+J
+        (e.ctrlKey && e.keyCode == 85) || // Ctrl+U
+        (e.ctrlKey && e.keyCode == 83) || // Ctrl+S
+        (e.ctrlKey && e.keyCode == 67) || // Ctrl+C
+        (e.ctrlKey && e.keyCode == 86) || // Ctrl+V
+        (e.ctrlKey && e.keyCode == 80) // Ctrl+P
+    ) {
+        return false;
+    }
+};
+
+(function () {
+    function detectDevTools() {
+        const threshold = 160;
+        if (
+            window.outerWidth - window.innerWidth > threshold ||
+            window.outerHeight - window.innerHeight > threshold
+        ) {
+            document.body.innerHTML = "";
+            document.body.style.background = "black";
+            window.location.reload();
+        }
+    }
+    setInterval(detectDevTools, 1000);
+})();
+
+console.log = function () {};
+console.warn = function () {};
+console.error = function () {};
+console.clear = function () {};
+setInterval(function () {
+    debugger;
+}, 100);
+
+if (window.self !== window.top) {
+    window.top.location = window.self.location;
+}
+
+document.addEventListener("copy", e => e.preventDefault());
+document.addEventListener("cut", e => e.preventDefault());
+document.addEventListener("paste", e => e.preventDefault());
+document.addEventListener("selectstart", e => e.preventDefault());
+document.addEventListener("dragstart", e => e.preventDefault());
+document.addEventListener("keydown", function (e) {
+    if (e.ctrlKey && e.key === "u") {
+        window.location.href = "about:blank";
+    }
+});
+
+setInterval(function(){
+    const start = performance.now();
+    debugger;
+    const end = performance.now();
+    if(end - start > 100){
+        document.body.innerHTML = "";
+    }
+}, 1000);
+</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
