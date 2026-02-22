@@ -9,6 +9,7 @@
 <meta name="robots" content="index, follow">
 <link rel="icon" href="https://img.freepik.com/premium-vector/ramadan-logo-here_1127111-318.jpg" type="image/jpeg">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <title>Ramadan Timer 2026 – Sehri & Iftar Countdown - Created By Imtiaz</title>
 
@@ -50,6 +51,51 @@ document.addEventListener("touchstart", function startOnceTouch() {
 }, { once: true });
 
 </script>
+
+<style>
+/* Initial state: hidden & moved down */
+.card {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Active state: fully visible and in position */
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+<style>
+.title, .location {
+  opacity: 0;                /* start invisible */
+  transform: translateY(-30px); /* start slightly above */
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.title.show, .location.show {
+  opacity: 1;                /* fade in */
+  transform: translateY(0);  /* slide to place */
+}
+</style>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const title = document.querySelector('.title');
+  const location = document.querySelector('.location');
+
+  // Animate title first
+  setTimeout(() => {
+    title.classList.add('show');
+  }, 200); // 200ms delay
+
+  // Animate location after title
+  setTimeout(() => {
+    location.classList.add('show');
+  }, 600); // 600ms delay
+});
+</script>
+
 <style>
 
 body{
@@ -96,17 +142,22 @@ body {
 }
 
 .title{
-    font-size:22px;
+    font-size: 30px;
     font-weight:bold;
     color:#ffd13b;
 }
+#countdownTitle {
+    font-size: 26px; 
+    margin-bottom: -17px;
+}
 
 .location{
-    margin:10px 0;
-    background:#82ffa136;
+    margin:5px 0;
+    background:#081d0d31;
     display:inline-block;
     padding:8px 15px;
     border-radius:20px;
+    font-size: 14px;
 }
 
 .card {
@@ -121,7 +172,7 @@ body {
 }
 
 .countdown{
-    font-size:38px;
+    font-size:50px;
     color:#ffd13b;
     margin:15px 0;
 }
@@ -132,29 +183,52 @@ body {
     margin-top:10px;
 }
 
+.countdown {
+    text-shadow: 0 0 15px #ffdf2b70;
+}
+
+.countdown-label {
+    font-size: 17px;
+    color: #a8a8a8;
+    margin-top: -20px;
+
+
+}
+
+
 .time-item{
     width:48%;
-    background:#00000056;
+    background:#00000023;
     padding:15px;
     margin: 10px;
     border-radius:10px;
 }
 
 .label{
-    font-size:16px;
+    font-size:17px;
 }
 
 .time{
-    font-size:20px;
+    font-size:21px;
     color:#ffd13b;
     margin-top:5px;
 }
 
 .date{
-    margin-top:10px;
-    font-size:14px;
+    margin-top:1px;
+    font-size:16px;
     opacity:0.9;
 }
+.location {
+
+
+  align-items: center; 
+  justify-content: center; 
+}
+    .location i {
+  margin-right: 9px; 
+}
+
 </style>
 
 </head>
@@ -162,14 +236,14 @@ body {
 
 <div class="container">
 
-<div class="title">🌙 সাহরী ও ইফতারের সময়সূচি</div>
-<div class="location">📍 কুমিল্লা, বাংলাদেশ</div>
-
+<div class="title">🌙সাহরী ও ইফতারের সময়সূচি🌙</div>
+<div class="location"><i class="fa-solid fa-location-dot"></i>  কুমিল্লা, বাংলাদেশ </div>
 <div class="card">
 <div id="ramadanDay">Loading...</div>
 <div class="date" id="todayDate"></div>
 <h3 id="countdownTitle">Countdown</h3>
 <div class="countdown" id="countdown">00:00:00</div>
+<div class="countdown-label" id="countdownLabel">ㅤㅤㅤㅤㅤㅤঘন্টাㅤㅤমিনিটㅤㅤসেকেন্ডㅤㅤㅤㅤㅤㅤ</div>
 <div class="time-box">
 <div class="time-item">
 <div class="label">সাহরী শেষ</div>
@@ -368,5 +442,15 @@ setInterval(function(){
     }
 }, 1000);
 </script>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const card = document.querySelector('.card');
+  setTimeout(() => {
+    card.classList.add('show'); // triggers fade + slide
+  }, 200); // 200ms delay for smooth effect
+});
+</script>
+
 </body>
 </html>
