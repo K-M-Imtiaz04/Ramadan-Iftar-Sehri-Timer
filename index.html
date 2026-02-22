@@ -51,14 +51,7 @@ document.addEventListener("touchstart", function startOnceTouch() {
 }, { once: true });
 
 </script>
-<style>
-  * {
-    user-select: none;       /* Standard */
-    -webkit-user-select: none; /* Chrome, Safari */
-    -moz-user-select: none;    /* Firefox */
-    -ms-user-select: none;     /* IE/Edge */
-  }
-</style>
+
 <style>
 /* Initial state: hidden & moved down */
 .card {
@@ -110,6 +103,10 @@ body{
    background: linear-gradient(90deg, #001f11, #0e5a3d, #001f10);
     color:white;
     text-align:center;
+    user-select: none;       /* Disable text selection */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 body {
     font-family: 'Hind Siliguri', 'Noto Sans Bengali', sans-serif;
@@ -269,6 +266,13 @@ body {
     &copy; 2026 Kazi Mohammad Imtiaz. All rights reserved.
 
 </footer>
+
+<script>
+  // Show music button only after page fully loads
+  window.addEventListener('load', function() {
+    document.getElementById('music-btn').style.display = 'inline-block';
+  });
+</script>
 <script>
 let sehriTimeObj, iftarTimeObj;
 function format12(time24) {
@@ -465,4 +469,3 @@ window.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html>
-
