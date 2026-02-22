@@ -3,11 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+<meta name="description" content="Accurate Ramadan timer with Sehri and Iftar countdown for your location. Get daily fasting times, prayer reminders, and Ramadan schedule 2026.">
+<meta name="keywords" content="Ramadan timer, Sehri time, Iftar time, Ramadan countdown, fasting time today, Ramadan 2026, prayer time, iftar countdown, sehri countdown">
+<meta name="author" content="Ramadan Timer 2026 – Sehri & Iftar Countdown - Created By Imtiaz">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="https://img.freepik.com/premium-vector/ramadan-logo-here_1127111-318.jpg" type="image/jpeg">
+
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<title>সাহরী ও ইফতারের সময়সূচি - Created By Imtiaz</title>
+<title>Ramadan Timer 2026 – Sehri & Iftar Countdown - Created By Imtiaz</title>
 
-
+  
 <audio id="bgMusic" loop>
   <source src="ramadan.mp3" type="audio/mpeg">
 </audio>
@@ -16,19 +23,18 @@
 <script>
 const music = document.getElementById("bgMusic");
 const btn = document.getElementById("musicBtn");
-let isPlaying = false; // Music is OFF by default
+let isPlaying = false; 
 
-// Function to start music
 function playMusic() {
     music.play().then(() => {
         isPlaying = true;
         btn.innerText = "🔊 গান চালু";
     }).catch(err => {
-        // Autoplay blocked (usually on mobile)
+       
     });
 }
 
-// Function to toggle music via button
+
 function toggleMusic() {
     if(isPlaying){
         music.pause();
@@ -39,16 +45,16 @@ function toggleMusic() {
     }
 }
 
-// Button click toggles music
+
 btn.addEventListener("click", toggleMusic);
 
-// Start music when user clicks anywhere for the first time
+
 document.addEventListener("click", function startOnce() {
     playMusic();
     document.removeEventListener("click", startOnce);
 }, { once: true });
 
-// Optional: also allow touchstart for mobile
+
 document.addEventListener("touchstart", function startOnceTouch() {
     playMusic();
     document.removeEventListener("touchstart", startOnceTouch);
@@ -196,15 +202,8 @@ body {
 </div>
 </div>
 
-
 <script>
-// =======================
-// Cumilla Ramadan Timer JS - Full Manual Calendar (Bangla Countdown)
-// =======================
-
 let sehriTimeObj, iftarTimeObj;
-
-// Convert 24-hour time to 12-hour format
 function format12(time24) {
     let [hour, minute] = time24.split(":");
     hour = parseInt(hour);
@@ -213,16 +212,13 @@ function format12(time24) {
     hour = hour ? hour : 12;
     return String(hour).padStart(2,'0') + ":" + minute + " " + ampm;
 }
-
-// Convert English numbers to Bangla
+  
 function toBanglaNumber(num) {
     const en = "0123456789";
     const bn = "০১২৩৪৫৬৭৮৯";
     return num.toString().replace(/[0-9]/g, d => bn[d]);
 }
 
-// ====== Manual Ramadan Calendar ======
-// 👉 You will write your own data here
 const ramadanCalendar = [
     { date: "Feb 21 - Saturday", sehri: "05:07", iftar: "17:57", ramadanDay: "৩", hijriDay: "১৪৪৭" },
     { date: "Feb 22 - Sunday",   sehri: "05:06", iftar: "17:57", ramadanDay: "৪", hijriDay: "১৪৪৭" },
@@ -232,7 +228,6 @@ const ramadanCalendar = [
     { date: "Feb 26 - Thursday", sehri: "05:03", iftar: "17:59", ramadanDay: "৮", hijriDay: "১৪৪৭" },
     { date: "Feb 27 - Friday",   sehri: "05:03", iftar: "18:00", ramadanDay: "৯", hijriDay: "১৪৪৭" },
     { date: "Feb 28 - Saturday", sehri: "05:02", iftar: "18:00", ramadanDay: "১০", hijriDay: "১৪৪৭" },
-
     { date: "Mar 1 - Sunday",    sehri: "05:01", iftar: "18:01", ramadanDay: "১১", hijriDay: "১৪৪৭" },
     { date: "Mar 2 - Monday",    sehri: "05:00", iftar: "18:01", ramadanDay: "১২", hijriDay: "১৪৪৭" },
     { date: "Mar 3 - Tuesday",   sehri: "04:59", iftar: "18:02", ramadanDay: "১৩", hijriDay: "১৪৪৭" },
@@ -240,7 +235,6 @@ const ramadanCalendar = [
     { date: "Mar 5 - Thursday",  sehri: "04:58", iftar: "18:02", ramadanDay: "১৫", hijriDay: "১৪৪৭" },
     { date: "Mar 6 - Friday",    sehri: "04:57", iftar: "18:03", ramadanDay: "১৬", hijriDay: "১৪৪৭" },
     { date: "Mar 7 - Saturday",  sehri: "04:56", iftar: "18:03", ramadanDay: "১৭", hijriDay: "১৪৪৭" },
-
     { date: "Mar 8 - Sunday",    sehri: "04:55", iftar: "18:04", ramadanDay: "১৮", hijriDay: "১৪৪৭" },
     { date: "Mar 9 - Monday",    sehri: "04:54", iftar: "18:04", ramadanDay: "১৯", hijriDay: "১৪৪৭" },
     { date: "Mar 10 - Tuesday",  sehri: "04:53", iftar: "18:05", ramadanDay: "২০", hijriDay: "১৪৪৭" },
@@ -257,7 +251,6 @@ const ramadanCalendar = [
    
 ];
 
-// ====== Select Today's Data ======
 function getTodayData() {
     let today = new Date();
     let todayStr = today.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
@@ -268,12 +261,8 @@ function getTodayData() {
         }
     }
 
-    return ramadanCalendar[0]; // fallback
-}
-
-// ====== Initialize ======
+    return ramadanCalendar[0];
 const todayData = getTodayData();
-
 document.getElementById("sehri").innerText =
     toBanglaNumber(format12(todayData.sehri));
 
@@ -286,13 +275,13 @@ document.getElementById("ramadanDay").innerText =
 document.getElementById("todayDate").innerText =
     todayData.date;
 
-// Create Date objects
+
 let todayDate = new Date().toISOString().split('T')[0];
 sehriTimeObj = new Date(todayDate + "T" + todayData.sehri);
 iftarTimeObj = new Date(todayDate + "T" + todayData.iftar);
 
 
-// ====== Countdown ======
+
 function updateCountdown() {
 
     let now = new Date();
@@ -320,9 +309,7 @@ function updateCountdown() {
     }
 
     document.getElementById("countdownTitle").innerText = title;
-
     let diff = target - now;
-
     let h = Math.floor(diff / 1000 / 60 / 60);
     let m = Math.floor((diff / 1000 / 60) % 60);
     let s = Math.floor((diff / 1000) % 60);
@@ -332,20 +319,85 @@ function updateCountdown() {
         String(m).padStart(2,'0') + ":" +
         String(s).padStart(2,'0');
 
-    // Convert to Bangla numbers
     document.getElementById("countdown").innerText =
         toBanglaNumber(timeString);
 }
 
-
-// ====== Run ======
 setInterval(updateCountdown, 1000);
 updateCountdown();
 </script>
+  
+<script>
+document.addEventListener("contextmenu", e => e.preventDefault());
+document.onkeydown = function (e) {
+    if (
+        e.keyCode == 123 || // F12
+        (e.ctrlKey && e.shiftKey && e.keyCode == 73) || // Ctrl+Shift+I
+        (e.ctrlKey && e.shiftKey && e.keyCode == 74) || // Ctrl+Shift+J
+        (e.ctrlKey && e.keyCode == 85) || // Ctrl+U
+        (e.ctrlKey && e.keyCode == 83) || // Ctrl+S
+        (e.ctrlKey && e.keyCode == 67) || // Ctrl+C
+        (e.ctrlKey && e.keyCode == 86) || // Ctrl+V
+        (e.ctrlKey && e.keyCode == 80) // Ctrl+P
+    ) {
+        return false;
+    }
+};
 
+(function () {
+    function detectDevTools() {
+        const threshold = 160;
+        if (
+            window.outerWidth - window.innerWidth > threshold ||
+            window.outerHeight - window.innerHeight > threshold
+        ) {
+            document.body.innerHTML = "";
+            document.body.style.background = "black";
+            window.location.reload();
+        }
+    }
+    setInterval(detectDevTools, 1000);
+})();
+
+
+console.log = function () {};
+console.warn = function () {};
+console.error = function () {};
+console.clear = function () {};
+
+setInterval(function () {
+    debugger;
+}, 100);
+
+if (window.self !== window.top) {
+    window.top.location = window.self.location;
+}
+
+document.addEventListener("copy", e => e.preventDefault());
+document.addEventListener("cut", e => e.preventDefault());
+document.addEventListener("paste", e => e.preventDefault());
+document.addEventListener("selectstart", e => e.preventDefault());
+document.addEventListener("dragstart", e => e.preventDefault());
+document.addEventListener("keydown", function (e) {
+    if (e.ctrlKey && e.key === "u") {
+        window.location.href = "about:blank";
+    }
+});
+
+setInterval(function(){
+    const start = performance.now();
+    debugger;
+    const end = performance.now();
+    if(end - start > 100){
+        document.body.innerHTML = "";
+    }
+}, 1000);
+
+</script>
 </body>
 
 </html>
+
 
 
 
