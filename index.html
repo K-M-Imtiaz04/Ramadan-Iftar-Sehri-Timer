@@ -51,7 +51,14 @@ document.addEventListener("touchstart", function startOnceTouch() {
 }, { once: true });
 
 </script>
-
+<style>
+  * {
+    user-select: none;       /* Standard */
+    -webkit-user-select: none; /* Chrome, Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE/Edge */
+  }
+</style>
 <style>
 /* Initial state: hidden & moved down */
 .card {
@@ -458,3 +465,4 @@ window.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html>
+
