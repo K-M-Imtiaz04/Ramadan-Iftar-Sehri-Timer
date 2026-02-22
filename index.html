@@ -262,6 +262,8 @@ function getTodayData() {
     }
 
     return ramadanCalendar[0];
+}
+
 const todayData = getTodayData();
 document.getElementById("sehri").innerText =
     toBanglaNumber(format12(todayData.sehri));
@@ -326,9 +328,9 @@ function updateCountdown() {
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
-  </script>
-</body>
+</script>
 
+</body>
 </html>
 
 
